@@ -1,19 +1,17 @@
 """Management command to import symptom and conditions data."""
 import csv
-import logging
 
 from django.core.management.base import BaseCommand
-from symptoms.models import Condition, Symptom
-logger = logging.getLogger('management')
+from api.models import Condition, Symptom
 
 
-class ImportSymptomsCommand(BaseCommand):
+class Command(BaseCommand):
     """Management command to import data from symptoms.csv."""
     help = 'Import symptoms and conditions from provided csv file.'
 
     def handle(self, *args, **options):
         """Execute command."""
-        with open('symptoms/symptoms.csv', 'rb') as csvfile:
+        with open('api/symptoms.csv', 'rb') as csvfile:
             symptom_reader = csv.reader(csvfile, delimiter=',')
             for row in symptom_reader:
                 # Create a Symptom from first column, and affiliated

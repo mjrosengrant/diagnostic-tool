@@ -1,4 +1,4 @@
-"""Models for the symptoms app."""
+"""Models for the api."""
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
