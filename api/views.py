@@ -24,6 +24,9 @@ def list_symptoms(requests):
 def get_conditions_for_symptom(requests, symptom_pk):
     """Print conditions associated with provided symptom."""
     symptom = get_object_or_404(Symptom, pk=symptom_pk)
+    symptom.search_count += 1
+    symptom.save()
+
     data = {
         "results": [
             {

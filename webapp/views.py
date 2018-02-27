@@ -2,9 +2,14 @@
 from __future__ import unicode_literals
 
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.template import loader, Context
+from django.template import loader
+
+from api.models import Symptom
+
 
 def render_webapp(requests):
-    t = loader.get_template('webapp/index.html')
-    return HttpResponse(t.render({'api_url': '127.0.0.1:8000/api/symptoms'}))
+    template = loader.get_template('webapp/index.html')
+    context = {
+        'symptom': Symptom.objects.all()
+    }
+    return HttpResponse(template.render(context))
