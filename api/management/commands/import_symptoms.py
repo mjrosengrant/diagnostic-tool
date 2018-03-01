@@ -11,7 +11,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         """Execute command."""
-        with open('api/symptoms.csv', 'rb') as csvfile:
+        with open('api/symptoms.csv', 'r') as csvfile:
             symptom_reader = csv.reader(csvfile, delimiter=',')
             for row in symptom_reader:
                 # Create a Symptom from first column, and affiliated
